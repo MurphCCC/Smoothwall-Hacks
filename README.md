@@ -7,7 +7,9 @@ I am currently using two servers to make this work.  Though the SWG has the capa
 
 Once this is in place and the user's device is set to use this new pac file, I check the apache logs on the pac server to ensure that their device is in fact requesting the correct pac file.  Once I know that this is working, I am them able to monitor the Apache logs and extract each line where a pac file is being requested.  It looks something like this:
 
+<code>
 localhost:8999 55.55.55.102 - - [25/Jan/2017:09:34:43 -0500] "GET /johndoe.pac HTTP/1.1" 200 2864 "-" "mdmd/1.0 CFNetwork/808.1.4 Darwin/16.1.0"
+</code>
 
 Now what I need to do, is to extract the IP address and the /proxy.pac .  I then run these results through sed/awk to remove the .pac extension and I end up with just an IP address and a name like this:
 
